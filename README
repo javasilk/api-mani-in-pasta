@@ -2,22 +2,20 @@ virtual host
 
 <VirtualHost *:80>
         ServerAdmin asalidu@it.tiscali.com
-        ServerName api.istella.tld
-        ServerAlias api.stage.istella.sys
-        DocumentRoot /var/www/istella_api/web
-
-        <Directory /var/www/istella_api/web/>
+        ServerName api.maniinpasta.com
+        DocumentRoot /var/www/mani_in_pasta_behat/web
+        <Directory /var/www/mani_in_pasta_behat/web/>
                 Options All
                 AllowOverride All
         </Directory>
 
-        ErrorLog ${APACHE_LOG_DIR}/istella_api_error.log
+        ErrorLog ${APACHE_LOG_DIR}/maniinpasta_error.log
 
         # Possible values include: debug, info, notice, warn, error, crit,
         # alert, emerg.
         LogLevel debug
 
-        CustomLog ${APACHE_LOG_DIR}/istella_api_access.log combined
+        CustomLog ${APACHE_LOG_DIR}/maniinpasta_access.log combined
 </VirtualHost>
 
 
