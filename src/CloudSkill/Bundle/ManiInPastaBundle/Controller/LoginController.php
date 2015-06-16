@@ -20,13 +20,18 @@ class LoginController extends Controller
         if(empty($pass)){
             throw new \Symfony\Component\HttpKernel\Exception\HttpException(400,"Bad pass");
         }
-        die('dfdf');
         
-        $response = new Response();
-        $resultArray = array("test"=>"sono un test");
-        $response->setContent(json_encode($resultArray));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+        if($user == "test"  and $pass=="letmin"){
+            $response = new Response();
+            $resultArray = array("username"=>$username,"userid"=>"123","fullname"=>"utente test");
+            $response->setContent(json_encode($resultArray));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
+            
+        }else {
+            throw new \Symfony\Component\HttpKernel\Exception\HttpException(404,"User Not Found");
+        }
+        
     }
 
 }
