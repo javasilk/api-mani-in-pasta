@@ -1,0 +1,12 @@
+nbproject
+app/cache/
+app/logs/
+app/bootstrap.php.cache
+vendor/
+web/bundles
+.htaccess
+web/.htaccess
+app/SymfonyRequirements.php
+bin/
+
+

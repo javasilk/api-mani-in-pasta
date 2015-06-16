@@ -1,0 +1,11 @@
+services:
+#    cloud_skill_mani_in_pasta.example:
+#        class: CloudSkill\Bundle\ManiInPastaBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    kernel.listener.your_listener_name:
+      class: CloudSkill\Bundle\ManiInPastaBundle\Listener\ManiInPastaExceptionListener
+      tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+      calls:
+            - [ setLogger, [ '@logger' ] ]

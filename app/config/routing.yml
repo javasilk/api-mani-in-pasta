@@ -1,0 +1,15 @@
+cloud_skill_mani_in_pasta:
+    resource: "@CloudSkillManiInPastaBundle/Resources/config/routing.yml"
+    prefix:   /v1/
+
+#TiscaliTestIstellaApiBundle:
+#    resource: "@AppBundle/Resources/config/routing.yml"
+#    prefix:   /1/
+#
+#
+#app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation
+    
+    
+    
