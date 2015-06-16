@@ -1,0 +1,28 @@
+virtual host
+
+<VirtualHost *:80>
+        ServerAdmin asalidu@it.tiscali.com
+        ServerName api.istella.tld
+        ServerAlias api.stage.istella.sys
+        DocumentRoot /var/www/istella_api/web
+
+        <Directory /var/www/istella_api/web/>
+                Options All
+                AllowOverride All
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/istella_api_error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel debug
+
+        CustomLog ${APACHE_LOG_DIR}/istella_api_access.log combined
+</VirtualHost>
+
+
+in /etc/hosts aggiungere
+
+127.0.0.1  api.maniinpasta.com
+
+
