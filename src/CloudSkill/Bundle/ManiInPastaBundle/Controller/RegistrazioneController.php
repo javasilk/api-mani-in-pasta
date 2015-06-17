@@ -40,7 +40,7 @@ class RegistrazioneController extends Controller
         }    
         $response = new Response();
         $resultArray = array(
-            "user"=>$username,
+            "user"=>$user,
             "nome"=>$nome,
             "cognome"=>$cognome,
             "status"=>"inactive");
