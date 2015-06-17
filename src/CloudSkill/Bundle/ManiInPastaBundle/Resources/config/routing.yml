@@ -1,6 +1,11 @@
 cloud_skill_mani_in_pasta_homepage:
     path:     /hello/{name}
     defaults: { _controller: CloudSkillManiInPastaBundle:Default:index }
+cloud_skill_mani_in_pasta_registrazione:
+    pattern:  /registrazione.{_format}
+    defaults: { _controller: CloudSkillManiInPastaBundle:Registrazione:registrazione, _format: 'json' }
+    requirements: 
+      _method: POST  
 cloud_skill_mani_in_pasta_login:
     pattern:  /login.{_format}
     defaults: { _controller: CloudSkillManiInPastaBundle:Login:login, _format: 'json' }

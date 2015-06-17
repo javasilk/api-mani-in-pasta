@@ -26,8 +26,18 @@ class LoginController extends Controller
         }        
         
         if($user == "inactive"  and $pass=="letmein"){
-            throw new \Symfony\Component\HttpKernel\Exception\HttpException(403,"Forbidden User Inactive");
-        }        
+            throw new \Symfony\Component\HttpKernel\Exception\HttpException(403,"Forbidden User Disable");
+        }    
+        
+        if($user == "test"  and $pass=="sbagliata"){
+            throw new \Symfony\Component\HttpKernel\Exception\HttpException(403,"User not found");
+        }    
+        if($user == "cippalippa"  and $pass=="sbagliata"){
+            throw new \Symfony\Component\HttpKernel\Exception\HttpException(403,"User not found");
+        }    
+        
+        
+        
         
         if($user == "test"  and $pass=="letmein"){
             $response = new Response();
@@ -37,7 +47,7 @@ class LoginController extends Controller
             return $response;
             
         }else {
-            throw new \Symfony\Component\HttpKernel\Exception\HttpException(404,"User Not Found");
+            throw new \Symfony\Component\HttpKernel\Exception\HttpException(404,"User Not Found ".$user.": ".$pass);
         }
         
     }
