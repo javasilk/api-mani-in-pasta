@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function loginAction(Request $request, $_format) 
     {
         $user = $request->request->get('user');
-        $pass = $request->request->get('pass');
+        $pass = $request->request->get('password');
         
         if(empty($user)){
             throw new \Symfony\Component\HttpKernel\Exception\HttpException(400,"Bad User");
@@ -21,7 +21,15 @@ class LoginController extends Controller
             throw new \Symfony\Component\HttpKernel\Exception\HttpException(400,"Bad pass");
         }
         
-        if($user == "test"  and $pass=="letmin"){
+        if($user == "disable"  and $pass=="letmein"){
+            throw new \Symfony\Component\HttpKernel\Exception\HttpException(403,"Forbidden User Disable");
+        }        
+        
+        if($user == "inactive"  and $pass=="letmein"){
+            throw new \Symfony\Component\HttpKernel\Exception\HttpException(403,"Forbidden User Inactive");
+        }        
+        
+        if($user == "test"  and $pass=="letmein"){
             $response = new Response();
             $resultArray = array("username"=>$username,"userid"=>"123","fullname"=>"utente test");
             $response->setContent(json_encode($resultArray));
