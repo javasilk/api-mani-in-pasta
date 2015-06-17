@@ -1,0 +1,3 @@
+cloud_skill_test_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CloudSkillTestBundle:Default:index }
