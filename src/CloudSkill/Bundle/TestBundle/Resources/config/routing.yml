@@ -1,3 +1,9 @@
 cloud_skill_test_homepage:
     path:     /hello/{name}
     defaults: { _controller: CloudSkillTestBundle:Default:index }
+cloud_skill_test_create_user:
+    path:     /user
+    defaults: { _controller: CloudSkillTestBundle:Default:userCreate}
+    requirements: 
+      _method: POST  
+    
