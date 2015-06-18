@@ -57,22 +57,16 @@ class RegistrazioneController extends Controller {
 
         $em->persist($user);
         $em->flush();
-        $array = array("id" => $user->getId());
-        return new Response(json_encode($user->toArray()));
-
-//        
-//        $response = new Response();
-//        $resultArray = array(
-//            "user"=>$user,
-//            "nome"=>$nome,
-//            "cognome"=>$cognome,
-//            "status"=>"inactive");
-//        $response->setContent(json_encode($resultArray));
-//        $response->headers->set('Content-Type', 'application/json');
-//        return $response;
+        
+        $response = new Response();
+        $response->setContent(json_encode($user->toArray()));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     public function activateAction(Request $request, $username) {
+
+        
         $token = $request->query->get('token');
         if (empty($token)) {
             throw new \Symfony\Component\HttpKernel\Exception\HttpException(400, "Bad request: token cannot be void");
@@ -85,25 +79,23 @@ class RegistrazioneController extends Controller {
                 throw new HttpException(403, "Forbidden");
             }
             if (!$user->getStatus() or $user->getStatus() != "inactive") {
-                throw new HttpException(403, "Forbidden: user not inactive");
+                throw new HttpException(422, "Forbidden: user not inactive");
             }
              $nowDate=new \Datetime();
-             \Symfony\Component\VarDumper\VarDumper::dump($user->getTokenExp()->getTimestamp());
-             \Symfony\Component\VarDumper\VarDumper::dump($nowDate->getTimestamp());
             if ($user->getTokenExp()->getTimestamp() < $nowDate->getTimestamp()) {
                 throw new HttpException(403, "Forbidden: token expired." . $user->getTokenExp()->getTimestamp() . "---" . $nowDate->getTimestamp());
             }
-
             $user->setStatus('active');
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            
             $response = new Response();
-            $user->toArray();
+            
             $response->setContent(json_encode($user->toArray()));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
+            
+            
         } catch (Exception $e) {
             throw new HttpException(500, "Generic server errror: " . $e->getMessage());
         }
