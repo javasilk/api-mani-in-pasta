@@ -9,7 +9,7 @@ cloud_skill_mani_in_pasta_registrazione:
       _method: POST  
       
 cloud_skill_mani_in_pasta_activate:
-    pattern:  /activate.{_format}
+    pattern:  /activate/{username}.{_format}
     defaults: { _controller: CloudSkillManiInPastaBundle:Registrazione:activate, _format: 'json' }
     requirements: 
       _method: PUT  

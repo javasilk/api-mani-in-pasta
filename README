@@ -24,3 +24,14 @@ in /etc/hosts aggiungere
 127.0.0.1  api.maniinpasta.com
 
 
+== Database ==
+Connettersi a mysql come admin/root e inserire:
+
+    create database maniinpasta;
+    grant all privileges on maniinpasta.* to maniinpasta@'localhost' identified by 'maniinpasta';
+    grant all privileges on maniinpasta.* to maniinpasta@'%' identified by 'maniinpasta';
+
+
+Da console, in api-mani-in-pasta
+
+    php app/console doctrine:schema:create

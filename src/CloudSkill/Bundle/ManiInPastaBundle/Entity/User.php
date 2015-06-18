@@ -42,6 +42,22 @@ class User
      */
     private $username;
 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
     /**
      * @var string
      *
@@ -210,5 +226,61 @@ class User
     public function getTokenExp()
     {
         return $this->tokenExp;
+    }
+    
+    
+    public function toArray(){
+        return array('id'=>$this->getId(),
+            'username'=>$this->getUsername(),
+            'status'=>$this->getStatus(),
+            'nome'=>$this->getNome(),
+            'cognome'=>$this->getCognome()
+                );
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

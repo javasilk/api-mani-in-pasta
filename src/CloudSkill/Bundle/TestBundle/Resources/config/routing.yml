@@ -6,4 +6,14 @@ cloud_skill_test_create_user:
     defaults: { _controller: CloudSkillTestBundle:Default:userCreate}
     requirements: 
       _method: POST  
+cloud_skill_test_delete_user:
+    path:     /user
+    defaults: { _controller: CloudSkillTestBundle:Default:userDelete}
+    requirements: 
+      _method: DELETE  
+cloud_skill_test_get_token_details:
+    path:     /user/{username}/token
+    defaults: { _controller: CloudSkillTestBundle:Default:getTokenDetails}
+    requirements: 
+      _method: GET
     
